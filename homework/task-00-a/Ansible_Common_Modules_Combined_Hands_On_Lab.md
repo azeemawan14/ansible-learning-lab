@@ -155,7 +155,7 @@ ansible three_tier_app -m command -a "uname -r"
 
 ```bash
 ansible three_tier_app -m shell \
-  -a "ps -ef | grep '[s]shd'"
+  -a "ps -ef | systemctl is-active sshd"
 ```
 
 The pipe is a shell operator, so this operation requires `shell`.

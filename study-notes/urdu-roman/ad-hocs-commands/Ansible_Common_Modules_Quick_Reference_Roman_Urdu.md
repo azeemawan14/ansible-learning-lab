@@ -223,7 +223,7 @@ ansible three_tier_app -m raw -a "command -v python3"
 ### 6.4 `shell` ke zariye pipe istemal karein
 
 ```bash
-ansible three_tier_app -m shell -a "ps -ef | grep '[s]shd'"
+ansible three_tier_app -m shell -a "ps -ef | systemctl is-active sshd"
 ```
 
 ### 6.5 Directory banayein

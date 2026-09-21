@@ -154,7 +154,7 @@ Jab pipe, redirection, variable expansion ya doosre shell features ki zaroorat n
 ### Step 2: `shell` use karein
 
 ```bash
-ansible three_tier_app -m shell -a "ps -ef | grep '[s]shd'"
+ansible three_tier_app -m shell -a "ps -ef | systemctl is-active sshd"
 ```
 
 Pipe `|` shell operator hai, is liye yahan `shell` module chahiye.

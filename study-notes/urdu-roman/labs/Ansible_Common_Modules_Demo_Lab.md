@@ -194,7 +194,7 @@ Pipe example:
 
 ```bash
 ansible three_tier_app -m shell -a \
-"ps -ef | grep '[s]shd'"
+"ps -ef | systemctl is-active sshd"
 ```
 
 Redirect example:

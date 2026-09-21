@@ -544,7 +544,7 @@ Run a pipeline with `shell`:
 
 ```bash
 ansible three_tier_app -m shell \
-  -a "ps -ef | grep '[s]shd'"
+  -a "ps -ef | systemctl is-active sshd"
 ```
 
 Complete the comparison:
