@@ -245,6 +245,9 @@ Purpose: copy files from managed nodes back to the control node.
 ```bash
 ansible three_tier_app -m fetch -a \
 "src=/tmp/ansible-module-lab/date.txt dest=./output/"
+
+ansible node1 -m fetch -a \
+"src=/tmp/ansible-module-lab/empty.txt dest=./backup/abc.txt flat=yes"
 ```
 
 By default, `fetch` creates a separate host directory under `output` so same-named files from different nodes do not overwrite one another.
@@ -263,7 +266,7 @@ Example using a public text file:
 
 ```bash
 ansible three_tier_app -m get_url -a \
-"url=https://www.example.com/ dest=/tmp/ansible-module-lab/example.html mode=0644"
+"url=https://raw.githubusercontent.com/kcommit/ansible-learning-lab/main/misc/inventory/nodes.ini dest=/tmp/nodes.ini mode=0644"
 ```
 
 Verify:
