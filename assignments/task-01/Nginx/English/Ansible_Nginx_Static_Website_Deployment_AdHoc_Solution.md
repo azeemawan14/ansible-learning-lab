@@ -302,7 +302,7 @@ ansible node1 -m uri -a "url=http://localhost status_code=200"
 
 The successful response showed `status: 200`, `server: nginx/1.20.1`, `content_length: 3538`, and `changed: false`.
 
-[URI explanation](./Ansible_URI_Status_Code_Study_Notes_English.md)
+[URI explanation](md/Ansible_URI_Status_Code_Study_Notes_English.md)
 
 Open this URL from a browser:
 

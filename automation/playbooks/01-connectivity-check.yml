@@ -1,0 +1,8 @@
+---
+- name: Verify managed-node connectivity
+  hosts: three_tier_app
+  gather_facts: false
+
+  tasks:
+    - name: Test the Ansible connection
+      ping:

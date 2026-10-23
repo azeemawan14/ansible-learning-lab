@@ -1,258 +1,119 @@
 # Ansible Learning Lab
 
-This repository documents my hands-on Ansible learning journey. It contains personal study notes, lab configurations, command explanations, assignments, and practical automation projects.
+A bilingual, hands-on Ansible learning repository for Rocky Linux. It combines study notes, guided labs, assignments, troubleshooting scenarios, quizzes, and reusable automation examples in English and Roman Urdu.
 
-The goal is to build a clear record of what I learn while progressing from Ansible fundamentals to reusable playbooks, roles, and real-world automation.
+## Start Here
 
-## Learning Objectives
+1. Review the [lab environment](#lab-environment).
+2. Read the [English study notes](study-notes/english/README.md) or [Roman Urdu study notes](study-notes/urdu-roman/README.md).
+3. Open [automation](automation/README.md) to inspect the working inventory and configuration.
+4. Practice with the [labs](labs/README.md).
+5. Complete the [assignments](assignments/README.md) without reading the solutions first.
+6. Use [scenarios](scenarios/README.md) for troubleshooting practice.
 
-- Understand Ansible control nodes and managed nodes
-- Configure secure SSH access between Linux systems
-- Build and validate static inventories
-- Understand `ansible.cfg` and configuration precedence
-- Run ad hoc commands and use Ansible modules
-- Write idempotent YAML playbooks
-- Organize variables, templates, handlers, and roles
-- Complete practical assignments and projects
+## Learning Path and Status
 
-## Current Lab Environment
+| Phase | Topic | Status |
+| --- | --- | --- |
+| 1 | Ansible fundamentals | Complete |
+| 2 | Control-node setup | Complete |
+| 3 | Inventory and configuration | Complete |
+| 4 | Ad hoc commands | Complete |
+| 5 | YAML and playbooks | Complete |
+| 6 | Variables and loops | Complete |
+| 7 | Nginx and SSH banner deployments | Complete |
+| 8 | Roles, templates, handlers, and Vault | Planned |
 
-| Role | Host or group | IP address | Purpose |
+## Lab Environment
+
+| Role | Inventory name | IP address | Purpose |
 | --- | --- | --- | --- |
-| Control node | `PracticeLab` | `192.168.1.233` | Runs Ansible commands and playbooks |
-| Managed node | `web-server` | `192.168.1.154` | Web-server practice |
-| Managed node | `app-server` | `192.168.1.185` | Application-server practice |
-| Managed node | `db-server` | `192.168.1.190` | Database-server practice |
+| Control node | `ansible-server` | `192.168.1.233` | Runs Ansible |
+| Managed node | `node1` | `192.168.1.154` | Web-server practice |
+| Managed node | `node2` | `192.168.1.185` | Application-server practice |
+| Managed node | `node3` | `192.168.1.190` | Database-server practice |
+
+> These private LAN addresses are examples from the personal lab. Students should replace them with addresses from their own environment.
 
 ### Control-node software
 
-- Rocky Linux 9.8
-- Python 3.9.25 at `/usr/bin/python3`
-- Ansible community package 7.7.0
-- Ansible Core 2.14.18
-- Administrative account: `ansibleadmin`
+- Rocky Linux 9
+- Python 3 at `/usr/bin/python3`
+- Ansible Core 2.14
+- Automation account: `ansibleadmin`
 
-## Topics Documented So Far
+## Repository Map
 
-- Agent-based and agentless automation
-- Why Ansible is used
-- Push and pull operating models
-- Idempotency
-- Rocky Linux control-node preparation
-- Python and EPEL verification
-- Ansible installation and local testing
-- Project-level `ansible.cfg`
-- Ansible configuration precedence
-- Static inventory groups, child groups, aliases, and variables
-- Inventory IP and hostname range patterns
-
-
-
-## Repository Structure
-
-The current files can remain in place while the repository is small. As more practical work is added, the repository will gradually be reorganized into the following structure:
-
-```text
-ansible-learning-lab/
-├── README.md
-├── .gitignore
-├── study-notes/
-│   ├── english/
-│   │   ├── 01-ansible-introduction.md
-│   │   ├── 02-control-node-setup.md
-│   │   ├── 03-ansible-configuration.md
-│   │   └── 04-static-inventory.md
-│   │
-│   └── roman-urdu/
-│       ├── 01-ansible-introduction.md
-│       ├── 02-control-node-setup.md
-│       ├── 03-ansible-configuration.md
-│       └── 04-static-inventory.md
-│
-├── automation/
-│   ├── ansible.cfg
-│   ├── inventory/
-│   │   ├── hosts.ini
-│   │   ├── group_vars/
-│   │   │   └── all.yml
-│   │   └── host_vars/
-│   │       ├── web-server.yml
-│   │       ├── app-server.yml
-│   │       └── db-server.yml
-│   │
-│   ├── playbooks/
-│   │   ├── ping.yml
-│   │   ├── packages.yml
-│   │   ├── users.yml
-│   │   └── services.yml
-│   │
-│   ├── roles/
-│   ├── templates/
-│   ├── files/
-│   └── vault/
-│
-├── labs/
-│   ├── 01-connectivity-test/
-│   ├── 02-ad-hoc-commands/
-│   ├── 03-package-management/
-│   ├── 04-user-management/
-│   ├── 05-file-management/
-│   └── 06-service-management/
-│
-├── assignments/
-│   ├── assignment-01-user-management/
-│   ├── assignment-02-package-management/
-│   ├── assignment-03-web-service/
-│   └── assignment-04-system-update/
-│
-├── projects/
-│   ├── 01-web-server-deployment/
-│   ├── 02-three-tier-application/
-│   ├── 03-linux-security-baseline/
-│   └── 04-patch-management/
-│
-└── resources/
-    ├── diagrams/
-    ├── screenshots/
-    ├── pdfs/
-    └── references/
-```
-
-### Folder purposes
-
-| Folder | Purpose |
+| Directory | Purpose |
 | --- | --- |
-| `study-notes/` | English and Roman Urdu explanations |
-| `automation/` | Working Ansible configuration, inventory, playbooks, and roles |
-| `labs/` | Small guided exercises for individual concepts |
-| `assignments/` | Tasks completed independently to test understanding |
-| `projects/` | Larger end-to-end automation scenarios |
-| `resources/` | Diagrams, PDFs, screenshots, and reference material |
+| [`automation/`](automation/README.md) | Active `ansible.cfg`, inventory, and playbook workspace |
+| [`study-notes/`](study-notes/README.md) | Topic-based English and Roman Urdu notes |
+| [`labs/`](labs/README.md) | Guided hands-on exercises |
+| [`assignments/`](assignments/README.md) | Challenges, solutions, presentations, PDFs, and quizzes |
+| [`scenarios/`](scenarios/README.md) | Real troubleshooting case studies with screenshots |
+| [`maintenance/`](maintenance/README.md) | Lab cleanup and maintenance procedures |
+| [`supplemental/`](supplemental/README.md) | Supporting Linux, SSH, SCP, and repository notes |
+| [`resources/`](resources/README.md) | External reference material |
 
-`assignments` is preferred over `homework` because it sounds more professional and works well for a public portfolio. A lab is a small focused exercise, while a project combines several skills into one complete solution.
+## Quick Commands
 
-### Keeping empty directories in Git
-
-Git does not track empty directories. Until a directory contains real work, a `.gitkeep` placeholder can be added:
-
-```bash
-touch labs/.gitkeep
-touch assignments/.gitkeep
-touch projects/.gitkeep
-```
-
-Remove the corresponding `.gitkeep` file after adding real files to that directory.
-
-## Repository Navigation
-
-- Start with `study-notes/` when reviewing a concept.
-- Use `automation/` for the active Ansible configuration, inventory, playbooks, and roles.
-- Open `labs/` for small guided exercises.
-- Open `assignments/` for tasks completed independently.
-- Open `projects/` for complete end-to-end automation work.
-- Use `resources/` for supporting PDFs, screenshots, diagrams, and references.
-
-## Basic Usage
-
-From the repository root, enter the working Ansible directory:
+Run these commands from the repository's `automation/` directory:
 
 ```bash
 cd automation
-```
 
-Check which configuration file Ansible is using:
-
-```bash
+# Confirm the active configuration file
 ansible --version
-```
 
-Validate the inventory:
-
-```bash
+# Inspect inventory structure and host variables
 ansible-inventory --graph
-ansible-inventory --list
-```
+ansible-inventory --host node1
 
-Test connectivity to all managed nodes:
-
-```bash
+# Test managed-node connectivity
 ansible all -m ping
-```
 
-Run a simple ad hoc command:
-
-```bash
+# Run a simple ad hoc command
 ansible all -m command -a "hostname"
-```
 
-When privilege escalation is required:
-
-```bash
-ansible all -b -m command -a "whoami"
-```
-
-## Planned Labs and Assignments
-
-1. Configure SSH key-based authentication
-2. Verify connectivity with the `ping` module
-3. Collect managed-node facts
-4. Manage packages with `dnf`
-5. Create users and groups
-6. Manage files, ownership, and permissions
-7. Control services with `systemd`
-8. Deploy an Nginx or Apache web page
-9. Use variables, loops, conditions, and handlers
-10. Create templates with Jinja2
-11. Encrypt secrets with Ansible Vault
-12. Convert a playbook into an Ansible role
-
-## Planned Projects
-
-- Multi-node web-server deployment
-- Three-tier application configuration
-- Linux user and security-baseline automation
-- Patch-management workflow
-- Service monitoring and validation playbook
-- Reusable role-based server provisioning
-
-## Important Security Notes
-
-- Do not commit passwords, private SSH keys, vault passwords, tokens, or other secrets.
-- Use SSH key authentication instead of permanent password-based automation.
-- Keep private keys outside the repository.
-- Use Ansible Vault for sensitive variables when required.
-- Review changes with `--check` and `--diff` when the selected module supports them.
-
-## Useful Validation Commands
-
-```bash
-# Display the active Ansible configuration
-ansible --version
-
-# Display changed configuration values
-ansible-config dump --only-changed
-
-# Validate inventory syntax and structure
-ansible-inventory --graph
-
-# Check playbook syntax without running it
-ansible-playbook playbook.yml --syntax-check
+# Validate a playbook before execution
+ansible-playbook playbooks/01-connectivity-check.yml --syntax-check
 
 # Preview supported changes
-ansible-playbook playbook.yml --check --diff
+ansible-playbook playbooks/01-connectivity-check.yml --check --diff
 ```
 
-## Progress
+## Naming and Organization Rules
 
-- [x] Prepare the Rocky Linux control node
-- [x] Install and verify Ansible
-- [x] Document `ansible.cfg`
-- [x] Create and document a static inventory
-- [ ] Configure SSH key authentication to all managed nodes
-- [ ] Verify all managed nodes with the Ansible `ping` module
-- [ ] Complete the first ad hoc command lab
-- [ ] Write the first playbook
-- [ ] Complete the first assignment
-- [ ] Complete the first end-to-end project
+- English and Roman Urdu material stays in separate language directories.
+- A **lab** is guided practice; an **assignment** is completed independently.
+- A **scenario** documents a real problem, diagnosis, fix, and verification.
+- Assignment folders keep the question and solution together, with clear filenames.
+- Images, PDFs, presentations, and HTML quizzes stay beside the topic they support.
+- New playbooks belong under `automation/playbooks/` or inside the relevant lab or assignment.
+- Use lowercase directory names with hyphens for new folders.
 
-This repository is a work in progress. The README, notes, examples, and progress checklist will be updated as new labs, assignments, and projects are completed.
+## Security Notes
+
+- Never commit passwords, private SSH keys, Vault passwords, or access tokens.
+- Use SSH key authentication for routine automation.
+- Keep private keys outside this repository.
+- Review `--check` and `--diff` output before applying important changes.
+- Do not run classroom cleanup commands against production systems.
+
+## Roadmap
+
+- [x] Ansible introduction and architecture
+- [x] Control-node preparation
+- [x] Static inventory and configuration
+- [x] Common modules and ad hoc commands
+- [x] YAML and playbook fundamentals
+- [x] Variables, facts, conditions, and loops
+- [x] Nginx and SSH banner practice
+- [ ] Handlers and templates
+- [ ] Ansible Vault
+- [ ] Roles and Ansible Galaxy
+- [ ] Multi-role end-to-end project
+
+## Repository Note
+
+This is a learning repository. Commands and IP addresses are designed for an isolated personal or classroom lab and should be reviewed before reuse elsewhere.

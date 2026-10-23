@@ -1,1 +1,26 @@
-.gitkeep
+# Ansible static inventory - personal lab
+
+[control]
+localhost ansible_connection=local
+
+[web]
+node1 ansible_host=192.168.1.154
+
+[app]
+node2 ansible_host=192.168.1.185
+
+[db]
+node3 ansible_host=192.168.1.190
+
+[application:children]
+web
+app
+
+[three_tier_app:children]
+web
+app
+db
+
+[all:vars]
+ansible_user=ansibleadmin
+ansible_python_interpreter=/usr/bin/python3
