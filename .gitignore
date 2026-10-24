@@ -16,3 +16,17 @@ vault-password*
 # Temporary files
 *.swp
 *~
+
+# Operating-system metadata
+desktop.ini
+.DS_Store
+*:Zone.Identifier
+
+# Python and Ansible working data
+__pycache__/
+*.pyc
+.ansible/
+
+# Editor settings
+.vscode/
+.idea/

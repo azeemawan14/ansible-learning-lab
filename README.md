@@ -1,119 +1,124 @@
 # Ansible Learning Lab
 
-A bilingual, hands-on Ansible learning repository for Rocky Linux. It combines study notes, guided labs, assignments, troubleshooting scenarios, quizzes, and reusable automation examples in English and Roman Urdu.
+A phase-based, bilingual Ansible study repository for Rocky Linux. It contains English and Roman Urdu study notes, guided labs, assignments, quizzes, troubleshooting cases, and a working three-node automation environment.
 
-## Start Here
+## Suggested Study Sequence
 
-1. Review the [lab environment](#lab-environment).
-2. Read the [English study notes](study-notes/english/README.md) or [Roman Urdu study notes](study-notes/urdu-roman/README.md).
-3. Open [automation](automation/README.md) to inspect the working inventory and configuration.
-4. Practice with the [labs](labs/README.md).
-5. Complete the [assignments](assignments/README.md) without reading the solutions first.
-6. Use [scenarios](scenarios/README.md) for troubleshooting practice.
+Foundations → control node and SSH → inventory and configuration → ad hoc commands → YAML and playbooks → variables and loops → projects → troubleshooting → automation workspace.
 
-## Learning Path and Status
+## Study and Lab Status
 
-| Phase | Topic | Status |
+Status describes the material currently documented in this repository. **Completed** means the named notes or lab record exists, **In progress** means useful material exists but more practical evidence is planned, and **Planned** means the next learning milestone has not yet been documented.
+
+| Section | Status | Documented checkpoint / remaining work |
 | --- | --- | --- |
-| 1 | Ansible fundamentals | Complete |
-| 2 | Control-node setup | Complete |
-| 3 | Inventory and configuration | Complete |
-| 4 | Ad hoc commands | Complete |
-| 5 | YAML and playbooks | Complete |
-| 6 | Variables and loops | Complete |
-| 7 | Nginx and SSH banner deployments | Complete |
-| 8 | Roles, templates, handlers, and Vault | Planned |
+| 01. Foundations | Completed — notes available | Core terms and Linux ping versus Ansible ping documented |
+| 02. Control Node and SSH | Completed — recorded scope | Rocky Linux setup, SSH keys, SCP, VS Code and Remote SSH documented |
+| 03. Inventory and Configuration | Completed — notes and examples | Static inventory, variables and configuration precedence documented |
+| 04. Ad Hoc Commands and Modules | Completed — labs available | Common modules, arguments, `get_url` and hands-on labs included |
+| 05. YAML and Playbooks | Completed — introductory scope | YAML, playbook structure, reusable task files, quiz and first labs included |
+| 06. Variables, Facts and Loops | Completed — introductory scope | Variable sources, facts, loops, posters and six-task lab included |
+| 07. Projects and Assignments | In progress | Inventory, SSH banner and Nginx assignments exist; more projects planned |
+| 08. Troubleshooting and Maintenance | Completed — existing cases | SSH connection-refused case and controlled `/tmp` cleanup documented |
+| 09. Automation Workspace | In progress | Working inventory, configuration and connectivity playbook included |
 
-## Lab Environment
+## Current Lab Environment
 
 | Role | Inventory name | IP address | Purpose |
 | --- | --- | --- | --- |
-| Control node | `ansible-server` | `192.168.1.233` | Runs Ansible |
+| Control node | `ansible-server` | `192.168.1.233` | Runs Ansible commands and playbooks |
 | Managed node | `node1` | `192.168.1.154` | Web-server practice |
 | Managed node | `node2` | `192.168.1.185` | Application-server practice |
 | Managed node | `node3` | `192.168.1.190` | Database-server practice |
 
-> These private LAN addresses are examples from the personal lab. Students should replace them with addresses from their own environment.
+These are private LAN examples from the personal lab. Students should replace them with values from their own environment.
 
-### Control-node software
+## 01. Foundations
 
-- Rocky Linux 9
-- Python 3 at `/usr/bin/python3`
-- Ansible Core 2.14
-- Automation account: `ansibleadmin`
+Ansible terminology, architecture and connectivity fundamentals.
 
-## Repository Map
+[Open topic guide](01_Foundations/README.md)
 
-| Directory | Purpose |
-| --- | --- |
-| [`automation/`](automation/README.md) | Active `ansible.cfg`, inventory, and playbook workspace |
-| [`study-notes/`](study-notes/README.md) | Topic-based English and Roman Urdu notes |
-| [`labs/`](labs/README.md) | Guided hands-on exercises |
-| [`assignments/`](assignments/README.md) | Challenges, solutions, presentations, PDFs, and quizzes |
-| [`scenarios/`](scenarios/README.md) | Real troubleshooting case studies with screenshots |
-| [`maintenance/`](maintenance/README.md) | Lab cleanup and maintenance procedures |
-| [`supplemental/`](supplemental/README.md) | Supporting Linux, SSH, SCP, and repository notes |
-| [`resources/`](resources/README.md) | External reference material |
+## 02. Control Node and SSH
 
-## Quick Commands
+Rocky Linux control-node preparation, SSH keys, SCP, VS Code and Remote SSH.
 
-Run these commands from the repository's `automation/` directory:
+[Open topic guide](02_Control_Node_and_SSH/README.md)
+
+## 03. Inventory and Configuration
+
+Static inventories, groups, variables, `ansible.cfg` and configuration precedence.
+
+[Open topic guide](03_Inventory_and_Configuration/README.md)
+
+## 04. Ad Hoc Commands and Modules
+
+Command structure, common modules, module arguments and guided practice.
+
+[Open topic guide](04_Ad_Hoc_Commands_and_Modules/README.md)
+
+## 05. YAML and Playbooks
+
+YAML data structures, playbook anatomy, reusable task files and validation.
+
+[Open topic guide](05_YAML_and_Playbooks/README.md)
+
+## 06. Variables, Facts and Loops
+
+Variable sources, facts, loops, conditions and combined practical exercises.
+
+[Open topic guide](06_Variables_Facts_and_Loops/README.md)
+
+## 07. Projects and Assignments
+
+Hands-on challenges, solutions, Nginx deployment and SSH banner practice.
+
+[Open topic guide](07_Projects_and_Assignments/README.md)
+
+## 08. Troubleshooting and Maintenance
+
+Real troubleshooting scenarios, verification steps and lab cleanup procedures.
+
+[Open topic guide](08_Troubleshooting_and_Maintenance/README.md)
+
+## 09. Automation Workspace
+
+The active configuration, inventory and executable playbook examples.
+
+[Open workspace guide](09_Automation_Workspace/README.md)
+
+## Additional Resources
+
+Reference material and supporting Linux, Git, Docker and repository notes.
+
+[Browse additional resources](Additional_Resources/README.md)
+
+## Archive
+
+Legacy indexes, unrelated historical material and the earlier organization helper remain available for reference. The numbered folders above are the current reading route.
+
+[Browse archive](Archive/README.md)
+
+## Quick Start
 
 ```bash
-cd automation
-
-# Confirm the active configuration file
+cd 09_Automation_Workspace
 ansible --version
-
-# Inspect inventory structure and host variables
 ansible-inventory --graph
-ansible-inventory --host node1
-
-# Test managed-node connectivity
 ansible all -m ping
-
-# Run a simple ad hoc command
-ansible all -m command -a "hostname"
-
-# Validate a playbook before execution
 ansible-playbook playbooks/01-connectivity-check.yml --syntax-check
-
-# Preview supported changes
-ansible-playbook playbooks/01-connectivity-check.yml --check --diff
+ansible-playbook playbooks/01-connectivity-check.yml
 ```
 
-## Naming and Organization Rules
+Review inventory addresses, the SSH username and the private-key path before running commands on another system.
 
-- English and Roman Urdu material stays in separate language directories.
-- A **lab** is guided practice; an **assignment** is completed independently.
-- A **scenario** documents a real problem, diagnosis, fix, and verification.
-- Assignment folders keep the question and solution together, with clear filenames.
-- Images, PDFs, presentations, and HTML quizzes stay beside the topic they support.
-- New playbooks belong under `automation/playbooks/` or inside the relevant lab or assignment.
-- Use lowercase directory names with hyphens for new folders.
+## Repository Rules
 
-## Security Notes
+- Keep English and Roman Urdu notes under the relevant topic.
+- Use a lab for guided practice and an assignment for independent work.
+- Keep questions and solutions clearly identified.
+- Store screenshots beside the lab or scenario they support.
+- Keep superseded material in `Archive/`; do not mix it into the main study route.
+- Never commit passwords, private keys, Vault passwords or access tokens.
 
-- Never commit passwords, private SSH keys, Vault passwords, or access tokens.
-- Use SSH key authentication for routine automation.
-- Keep private keys outside this repository.
-- Review `--check` and `--diff` output before applying important changes.
-- Do not run classroom cleanup commands against production systems.
-
-## Roadmap
-
-- [x] Ansible introduction and architecture
-- [x] Control-node preparation
-- [x] Static inventory and configuration
-- [x] Common modules and ad hoc commands
-- [x] YAML and playbook fundamentals
-- [x] Variables, facts, conditions, and loops
-- [x] Nginx and SSH banner practice
-- [ ] Handlers and templates
-- [ ] Ansible Vault
-- [ ] Roles and Ansible Galaxy
-- [ ] Multi-role end-to-end project
-
-## Repository Note
-
-This is a learning repository. Commands and IP addresses are designed for an isolated personal or classroom lab and should be reviewed before reuse elsewhere.
+[File Move Map](FILE_MOVE_MAP.csv) | [Link Review](LINK_REVIEW.md)

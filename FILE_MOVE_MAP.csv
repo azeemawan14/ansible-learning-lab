@@ -1,0 +1,13 @@
+previous_location,new_location,reason
+study-notes/english basic material,01_Foundations/English,Create a numbered learning sequence
+study-notes/urdu-roman basic material,01_Foundations/Roman_Urdu,Keep bilingual foundation notes together by topic
+control-node and SSH notes,02_Control_Node_and_SSH,Group setup and remote-access material
+configuration and inventory notes,03_Inventory_and_Configuration,Create a dedicated configuration phase
+ad-hocs-commands and common-module labs,04_Ad_Hoc_Commands_and_Modules,Group one-off automation practice
+study-notes/*/play-books,05_YAML_and_Playbooks,Create a dedicated playbook phase
+play-books/variables-loop,06_Variables_Facts_and_Loops,Separate reusable-data concepts from basic playbooks
+assignments and labs,07_Projects_and_Assignments,Keep challenges and guided practice together
+scenarios and maintenance,08_Troubleshooting_and_Maintenance,Group incident records and cleanup procedures
+automation,09_Automation_Workspace,Make the executable project the final practical phase
+resources and supporting Linux notes,Additional_Resources,Separate references from the main study route
+legacy indexes and unrelated VMware quizzes,Archive,Preserve history without mixing it into Ansible topics
